@@ -1,6 +1,7 @@
 package futbolSwing;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -106,7 +107,8 @@ public class PlayerAnalysisView extends JPanel {
 				e.printStackTrace();
 			}
 	     
-	     JLabel lblPlayerAnalysis = new JLabel("Player Analysis");
+	     JLabel lblPlayerAnalysis = new JLabel("Player Analysis",JLabel.CENTER);
+	     lblPlayerAnalysis.setFont(new Font("Arial", Font.BOLD, 24));
 	        topPan.add(lblPlayerAnalysis, BorderLayout.SOUTH);
 	        outerPan.add(ctrPan, BorderLayout.CENTER);
 	        outerPan.add(topPan,BorderLayout.NORTH);
@@ -134,7 +136,7 @@ public class PlayerAnalysisView extends JPanel {
 	        });
 	        //sorter.setSortable(0, false);
 	        
-	        add(outerPan,BorderLayout.CENTER);
+	        add(outerPan);
 	        
 	       // JLabel lblPlayerAnalysis = new JLabel("Player Analysis");
 	        //topPan.add(lblPlayerAnalysis, BorderLayout.CENTER);

@@ -4,11 +4,13 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
  
+
 
 
 
@@ -68,8 +70,9 @@ public class LeagueAnalysisView extends JPanel {
 					e.printStackTrace();
 				}
 		     
-		     JLabel lblPlayerAnalysis = new JLabel("League Analysis");
-		        topPan.add(lblPlayerAnalysis, BorderLayout.SOUTH);
+		     JLabel lblLeagueAnalysis = new JLabel("League Analysis",JLabel.CENTER);
+		     lblLeagueAnalysis.setFont(new Font("Arial", Font.BOLD, 24));
+		        topPan.add(lblLeagueAnalysis, BorderLayout.SOUTH);
 		        outerPan.add(ctrPan, BorderLayout.CENTER);
 		        outerPan.add(topPan,BorderLayout.NORTH);
 	        
@@ -89,7 +92,7 @@ public class LeagueAnalysisView extends JPanel {
 	        });
 	        //sorter.setSortable(0, false);
 	        
-	        add(outerPan,BorderLayout.CENTER);
+	        add(outerPan);
 	        
 	       // JLabel lblPlayerAnalysis = new JLabel("Player Analysis");
 	        //topPan.add(lblPlayerAnalysis, BorderLayout.CENTER);

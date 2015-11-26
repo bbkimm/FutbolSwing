@@ -1,4 +1,7 @@
 package futbolSwing;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.EventQueue;
 
 import javax.imageio.ImageIO;
@@ -15,6 +18,7 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JTabbedPane;
 
 import com.alee.laf.WebLookAndFeel;
 
@@ -66,6 +70,7 @@ public class MainView{
 			e.printStackTrace();
 		}*/
 		
+		
 		JPanel outerPan = new JPanel(new BorderLayout());
 		//outerPan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
 		
@@ -111,20 +116,63 @@ public class MainView{
 		JButton btnPlayerAnalysis = new JButton("Player Analysis");
 		ctrPan1.add(btnPlayerAnalysis);
 		
+		// TEST
+		/*public void addComponentToPane(Container pane) {
+	        JTabbedPane tabbedPane = new JTabbedPane();
+	 
+	        //Create the "cards".
+	        JPanel card1 = new JPanel() {
+	            //Make the panel wider than it really needs, so
+	            //the window's wide enough for the tabs to stay
+	            //in one row.
+	            public Dimension getPreferredSize() {
+	                Dimension size = super.getPreferredSize();
+	                size.width += extraWindowWidth;
+	                return size;
+	            }
+	        };
+	        card1.add(new JButton("Button 1"));
+	        card1.add(new JButton("Button 2"));
+	        card1.add(new JButton("Button 3"));
+	 
+	        JPanel card2 = new JPanel();
+	        card2.add(new JTextField("TextField", 20));
+	 
+	        tabbedPane.addTab(BUTTONPANEL, card1);
+	        tabbedPane.addTab(TEXTPANEL, card2);
+	 
+	        pane.add(tabbedPane, BorderLayout.CENTER);
+	    }*/
+		
+		
+		//
+		
 		btnPlayerAnalysis.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
 	            /*JFrame frame = new JFrame ("MyPanel");
 	            frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
 	            frame.getContentPane().add(new PlayerAnalysis());*/
+	        	
 	        	JPanel pAnaPanel = new PlayerAnalysisView();
+	        	
+	        	JPanel lAnaPanel = new LeagueAnalysisView(); 	
+	        	JTabbedPane tabbedPane = new JTabbedPane();
+	        	
+	        	tabbedPane.addTab("Player Analysis", pAnaPanel);
+		        tabbedPane.addTab("League Analysis", lAnaPanel);
+	        	
 	        	//frame.removeAll();
 	        	//frame.dispose();
 	        	frame.invalidate();
 	        	frame.validate();
 	        	frame.repaint();
 
-	        	frame.setContentPane(pAnaPanel); 
+	            //pAnaPanel.addComponentToPane(frame.getContentPane());
+	        	
+	        	//frame.setContentPane(pAnaPanel); 
+	        	frame.setContentPane(tabbedPane);
+	        	
 	            //frame.pack();
 	            frame.setVisible (true);
 
@@ -153,16 +201,15 @@ public class MainView{
 	        }
 		});
 		
-		JButton btnLogin = new JButton("Authorized Login");
+		JButton btnLogin = new JButton("Scorekeeper Login");
 		ctrPan3.add(btnLogin);
 		
 		btnLogin.addActionListener(new ActionListener() {
 	        @Override
 	        public void actionPerformed(ActionEvent e) {
-	            /*JFrame frame = new JFrame ("MyPanel");
-	            frame.setDefaultCloseOperation (JFrame.EXIT_ON_CLOSE);
-	            frame.getContentPane().add(new PlayerAnalysis());*/
-	        	JPanel AuthPanel = new AuthenticationView();
+	            
+	        	//JPanel AuthPanel = new AuthenticationView();
+	        	JPanel AuthPanel = new LiveScoreView();
 	        	//frame.removeAll();
 	        	//frame.dispose();
 	        	frame.invalidate();
@@ -176,12 +223,37 @@ public class MainView{
 	        }
 		});
 		
+		
+		
 		ctrPan.add(ctrPan1,BorderLayout.NORTH);
 		ctrPan.add(ctrPan2_1,BorderLayout.CENTER);
 		ctrPan2_1.add(ctrPan2,BorderLayout.NORTH);
 		ctrPan2_1.add(ctrPan3,BorderLayout.CENTER);
 		
 		outerPan.add(ctrPan,BorderLayout.CENTER);
+		
+		
+		/*JPanel buttonPanel = new JPanel(); 
+		final JButton previousButton = new JButton("PREVIOUS");
+        previousButton.setBackground(Color.BLACK);
+        previousButton.setForeground(Color.WHITE);
+        buttonPanel.add(previousButton);
+        
+        PlayerAnalysisView win1 = new PlayerAnalysisView();
+        outerPan.add(win1, "pAna");
+        LeagueAnalysisView win2 = new LeagueAnalysisView();
+        outerPan.add(win2, "lAna");
+        
+        frame.add(buttonPanel, BorderLayout.PAGE_END);
+        
+        previousButton.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent ae)
+            {
+                CardLayout cardLayout = (CardLayout) outerPan.getLayout();
+                cardLayout.previous(outerPan);
+            }
+        });*/
 		
 		frame.setContentPane(outerPan);
 		frame.pack();
