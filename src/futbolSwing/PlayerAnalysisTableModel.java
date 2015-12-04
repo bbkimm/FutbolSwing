@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.soccer.Player;
+
 public class PlayerAnalysisTableModel extends AbstractTableModel{
 	/**
 	 * 
@@ -20,12 +22,13 @@ public class PlayerAnalysisTableModel extends AbstractTableModel{
     
     public PlayerAnalysisTableModel(List<Player> listPlayers) {
         this.listPlayers = listPlayers;
-    int indexCount = 1;
-    
-    for (Player player : listPlayers) {
-        player.setIndex(indexCount);
-        indexCount++;
-    }
+	   
+        /* int indexCount = 1;
+	    
+	    for (Player player : listPlayers) {
+	        player.setIndex(indexCount);
+	        indexCount++;
+	    }*/
 	}
     
     @Override
@@ -45,32 +48,35 @@ public class PlayerAnalysisTableModel extends AbstractTableModel{
      
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (listPlayers.isEmpty()) {
-            return Object.class;
+            if (listPlayers.isEmpty()) {
+                return Object.class;
         }
         return getValueAt(0, columnIndex).getClass();
     }
     
     @Override
-    public Object getValueAt(int rowIndex, int columnIndex) {
-       Player player = listPlayers.get(rowIndex);
+    public Object getValueAt(int rowIndex, int columnIndex){
+        Player player = listPlayers.get(rowIndex);
         Object returnValue = null;
          
         switch (columnIndex) {
         case COLUMN_NO:
-            returnValue = player.getIndex();
+            //returnValue = player.getNumber();      
+        	returnValue = player.getNumber();
             break;
         case COLUMN_NAME:
             returnValue = player.getName();
             break;
         case COLUMN_SHOTS:
-            returnValue = player.getShots();
+           // returnValue = player.getListOfShots().size();
+            returnValue = player.getListOfShots().size();
             break;
         case COLUMN_GOALS:
             returnValue = player.getNumGoals();
             break;
         case COLUMN_PENALTIES:
-            returnValue = player.getInfractions();
+           // returnValue = player.getListOfInfractions().size();
+            returnValue = player.getListOfInfractions().size();
             break;
         default:
             throw new IllegalArgumentException("Invalid column index");

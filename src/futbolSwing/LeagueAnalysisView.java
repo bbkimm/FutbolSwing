@@ -14,6 +14,7 @@ import java.util.List;
 
 
 
+
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -24,7 +25,13 @@ import javax.swing.event.RowSorterListener;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import exception.InvalidInputException;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.soccer.Player;
+//import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.soccer.Team;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.exception.IdLengthException;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.exception.InvalidInputException;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.exception.NameLengthException;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.exception.NumberLengthException;
+import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.exception.PlayerNotFoundException;
 
 public class LeagueAnalysisView extends JPanel {
 	/**
@@ -36,6 +43,127 @@ public class LeagueAnalysisView extends JPanel {
 	 * Create the panel.
 	 */
 	public LeagueAnalysisView() {
+		
+		
+		/*Team Dragons = new Team(1);
+        Team Pheonix = new Team(2);
+        Team Triades = new Team(3);
+        Team Redman = new Team(4);
+
+        try {
+            Dragons.setNumPoints(23);
+            Redman.setNumPoints(25);
+            Pheonix.setNumPoints(17);
+            Triades.setNumPoints(29);
+            
+            Dragons.setName("Dragons");
+            Pheonix.setName("Pheonix");
+            Triades.setName("Triades");
+            Redman.setName("Redman");
+
+            Dragons.setNumGoals(52);
+            Pheonix.setNumGoals(24);
+            Triades.setNumGoals(61);
+            Redman.setNumGoals(44);
+
+            Dragons.setNumPenalties(16);
+            Pheonix.setNumPenalties(28);
+            Triades.setNumPenalties(13);
+            Redman.setNumPenalties(9);
+        } catch (InvalidInputException e) {
+        }
+
+
+        Player nathanlarue = null;
+        Player briankimlim = null;
+        Player kevinnam = null;
+        Player alexanderwu = null;
+        Player xavierfortin = null;
+        Player charlesbedard = null;
+        Player alexbirer = null;
+        Player felixpoulin = null;
+        try {
+            nathanlarue = new Player(1, "Larue, Nathan", 12);
+            briankimlim = new Player(2, "Kim Lim, Brian", 31);
+            kevinnam = new Player(3, "Nam, Kevin", 21);
+            alexanderwu = new Player(4, "Wu, Alexander", 40);
+            felixpoulin = new Player(5, "Poulin, Felix", 31);
+            xavierfortin = new Player(6, "Fortin, Xavier", 53);
+            charlesbedard = new Player(7, "Bedard, Charles", 86);
+            alexbirer = new Player(8, "Birer, Alex", 81);
+
+            nathanlarue.addShot(true);
+            nathanlarue.addShot(true);
+            nathanlarue.addShot(false);
+            nathanlarue.addShot(false);
+            briankimlim.addShot(true);
+            briankimlim.addShot(false);
+            briankimlim.addShot(false);
+            kevinnam.addShot(true);
+            kevinnam.addShot(true);
+            kevinnam.addShot(true);
+            kevinnam.addShot(true);
+            alexanderwu.addShot(true);
+            alexanderwu.addShot(true);
+            alexanderwu.addShot(true);
+            alexanderwu.addShot(false);
+            xavierfortin.addShot(true);
+            xavierfortin.addShot(true);
+            xavierfortin.addShot(true);
+            xavierfortin.addShot(false);
+            charlesbedard.addShot(true);
+            charlesbedard.addShot(true);
+            alexbirer.addShot(true);
+            alexbirer.addShot(true);
+            alexbirer.addShot(true);
+            alexbirer.addShot(true);
+            alexbirer.addShot(false);
+
+            nathanlarue.addInfraction(1);
+            nathanlarue.addInfraction(2);
+            nathanlarue.addInfraction(3);
+            nathanlarue.addInfraction(2);
+            nathanlarue.addInfraction(3);
+            briankimlim.addInfraction(1);
+            briankimlim.addInfraction(2);
+            briankimlim.addInfraction(1);
+            kevinnam.addInfraction(3);
+            kevinnam.addInfraction(3);
+            alexanderwu.addInfraction(2);
+            alexanderwu.addInfraction(2);
+            alexanderwu.addInfraction(1);
+            alexanderwu.addInfraction(3);
+            alexanderwu.addInfraction(3);
+            xavierfortin.addInfraction(1);
+            xavierfortin.addInfraction(2);
+            charlesbedard.addInfraction(2);
+            charlesbedard.addInfraction(3);
+            alexbirer.addInfraction(1);
+            alexbirer.addInfraction(1);
+
+        } catch (NameLengthException e) {
+        } catch (NumberLengthException e) {
+        } catch (IdLengthException e) {
+        }
+        
+        ArrayList<Team> teamArrayList = new ArrayList<>();
+        ArrayList<Player> playerArrayList = new ArrayList<>();
+        
+        teamArrayList.add(Dragons);
+        teamArrayList.add(Pheonix);
+        teamArrayList.add(Triades);
+        teamArrayList.add(Redman);
+        
+        playerArrayList.add(nathanlarue);
+        playerArrayList.add(briankimlim);
+        playerArrayList.add(kevinnam);
+        playerArrayList.add(alexanderwu);
+        playerArrayList.add(xavierfortin);
+        playerArrayList.add(charlesbedard);
+        playerArrayList.add(alexbirer);
+        playerArrayList.add(felixpoulin);*/
+
+		
 		 
 		JPanel outerPan = new JPanel(new BorderLayout());
 		//outerPan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
@@ -47,16 +175,18 @@ public class LeagueAnalysisView extends JPanel {
 		ctrPan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
  
 		
-	     List<Team> listTeams = createListTeam();
+	     /*List<Team> listTeams = createListTeam();
 	        TableModel tableModel = new LeagueAnalysisTableModel(listTeams);
-	        table = new JTable(tableModel);
-
+	        table = new JTable(tableModel);*/
+		TableModel tableModel = new LeagueAnalysisTableModel(DatabaseManager.listTeams);
+        table = new JTable(tableModel);
+		
 	        JScrollPane lTable = new JScrollPane(table);
 		     ctrPan.add(lTable,BorderLayout.CENTER);
 		     
 	        //add(new JScrollPane(table), BorderLayout.CENTER);
 	        
-		     String IMG_PATH = "src/futbol_logo.png";
+		     String IMG_PATH = "futbol_logo.png";
 				try{
 					BufferedImage img = ImageIO.read(new File(IMG_PATH));
 			         ImageIcon icon = new ImageIcon(img);
@@ -90,7 +220,9 @@ public class LeagueAnalysisView extends JPanel {
 	                }
 	            }
 	        });
-	        //sorter.setSortable(0, false);
+	        sorter.setSortable(0, false);
+	        sorter.setSortable(1, false);
+	        sorter.setSortable(2, false);
 	        
 	        add(outerPan);
 	        
@@ -103,7 +235,7 @@ public class LeagueAnalysisView extends JPanel {
 	        setLocationRelativeTo(null);*/
 	}    
 	 
-	    public List<Team> createListTeam() {
+	   /* public List<Team> createListTeam() {
 	        List<Team> listTeams = new ArrayList<>();
 	 
 	        // code to add dummy data here...
@@ -136,7 +268,7 @@ public class LeagueAnalysisView extends JPanel {
 	        listTeams.add(Redman);
 	        
 	        return listTeams;
-	    }
+	    }*/
 	 
 	    /*public static void main(String[] args) {
 	    	

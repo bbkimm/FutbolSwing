@@ -1,8 +1,12 @@
 package futbolSwing;
 
+
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
+
+
+//import com.fourpointzeroteam.nathan.fantasyfutbol.Futbol.soccer.Team;
 
 public class LeagueAnalysisTableModel extends AbstractTableModel{
 	private static final long serialVersionUID = -2458050882626441238L;
@@ -15,14 +19,14 @@ public class LeagueAnalysisTableModel extends AbstractTableModel{
     private String[] columnNames = {"No #", "Team Name", "Points", "Goals","Penalties"};
     private List<Team> listTeams;
     
-    public LeagueAnalysisTableModel(List<Team> listTeams) {
-        this.listTeams = listTeams;
-    int indexCount = 1;
-    
-    for (Team team : listTeams) {
-        team.setIndex(indexCount);
-        indexCount++;
-    }
+    public LeagueAnalysisTableModel(List<Team> teamArrayList) {
+        this.listTeams = teamArrayList;
+	    /*int indexCount = 1;
+	    
+		    for (Team team : listTeams) {
+		        team.setIndex(indexCount);
+		        indexCount++;
+		    }*/
 	}
     
     @Override
@@ -55,7 +59,7 @@ public class LeagueAnalysisTableModel extends AbstractTableModel{
          
         switch (columnIndex) {
         case COLUMN_NO:
-            returnValue = team.getIndex();
+            returnValue = team.getID();
             break;
         case COLUMN_NAME:
             returnValue = team.getName();
